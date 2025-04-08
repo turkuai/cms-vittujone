@@ -116,3 +116,61 @@ footer p {
     margin-top: 10px;
     font-size: 1rem;
 }
+
+/* Bottom-left and bottom-right styling */
+.bottom-left {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: white;
+    padding: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 10;
+}
+
+.bottom-left h1 {
+    font-size: 1.2rem;
+    color: #e60000;
+}
+
+.bottom-left p {
+    font-size: 1rem;
+    color: #333;
+    margin-top: 10px;
+}
+
+.bottom-right {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: white;
+    padding: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 10;
+}
+
+.bottom-right h1 {
+    font-size: 1.2rem;
+    color: #e60000;
+}
+
+.bottom-right ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.bottom-right ul li {
+    margin-bottom: 5px;
+}
+
+.bottom-right ul li a {
+    color: #e60000;
+    text-decoration: none;
+}
+
+.bottom-right ul li a:hover {
+    color: #ff4d4d;
+}
