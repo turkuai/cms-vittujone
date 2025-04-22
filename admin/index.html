@@ -13,26 +13,23 @@
         let editSocialMediaMode = false;
 
         function handleParagraphEdit() {
-            console.log("handleTitleEdit", editParagraphMode);
-            editParagraphMode = !editParagraphMode;
-            console.log("after change", editParagraphMode);
-
             const ParagraphElement = document.getElementById("title");
             const inputElement = document.getElementById("titleInput");
 
+            // Vaihdetaan tekstikenttä ja näkyvä teksti
             if (!editParagraphMode) {
                 const title = inputElement.value;
                 ParagraphElement.innerHTML = title;
-                localStorage.setItem("title", title);
+                localStorage.setItem("title", title); // Tallennetaan paikallisesti
             }
 
             ParagraphElement.hidden = editParagraphMode;
             inputElement.hidden = !editParagraphMode;
             document.getElementById("titleButton").innerHTML = editParagraphMode ? "Save" : "Edit";
+            editParagraphMode = !editParagraphMode;
         }
 
         function handleFooterNoteEdit() {
-            editFooterNoteMode = !editFooterNoteMode;
             const footerNoteElement = document.getElementById("footerNote");
             const inputFooterNote = document.getElementById("footerNoteInput");
 
@@ -45,16 +42,7 @@
             footerNoteElement.hidden = editFooterNoteMode;
             inputFooterNote.hidden = !editFooterNoteMode;
             document.getElementById("footerNoteButton").innerHTML = editFooterNoteMode ? "Save" : "Edit";
-        }
-
-        function handleSocialMediaEdit() {
-            editSocialMediaMode = !editSocialMediaMode;
-            const socialLinks = document.getElementById("socialLinks");
-            const socialLinkInput = document.getElementById("socialLinkInput");
-
-            socialLinks.hidden = editSocialMediaMode;
-            socialLinkInput.hidden = !editSocialMediaMode;
-            document.getElementById("socialMediaButton").innerHTML = editSocialMediaMode ? "Save" : "Edit";
+            editFooterNoteMode = !editFooterNoteMode;
         }
 
         function handleAddSocialLink() {
@@ -69,18 +57,28 @@
                 a.innerText = newLink;
                 li.appendChild(a);
                 ul.appendChild(li);
-                linkInput.value = ""; // Clear the input
+                linkInput.value = ""; // Tyhjennetään kenttä
             }
+        }
+
+        function handleSocialMediaEdit() {
+            const socialLinks = document.getElementById("socialLinks");
+            const socialLinkInput = document.getElementById("socialLinkInput");
+            const socialLinkInputSection = document.getElementById("socialLinkInputSection");
+
+            socialLinks.hidden = !socialLinks.hidden;
+            socialLinkInputSection.hidden = socialLinks.hidden;
+
+            document.getElementById("socialMediaButton").innerHTML = socialLinks.hidden ? "Edit" : "Save";
         }
 
         addEventListener("load", function () {
             const title = localStorage.getItem("title");
             const footerNote = localStorage.getItem("footerNote");
-            document.getElementById("title").innerHTML = title;
-            document.getElementById("footerNote").innerHTML = footerNote;
+            if (title) document.getElementById("title").innerHTML = title;
+            if (footerNote) document.getElementById("footerNote").innerHTML = footerNote;
         });
     </script>
-
 </head>
 
 <body>
@@ -91,8 +89,8 @@
         </div>
         <div class="headline">
             <h1 id="title">Joonatanin Tehtävät</h1>
-            <!-- Keep only one "Edit" button for editing the title -->
             <button id="titleButton" onclick="handleParagraphEdit()">Edit</button>
+            <input id="titleInput" type="text" placeholder="New Title" hidden />
         </div>
         <nav>
             <ul>
@@ -120,6 +118,7 @@
             <h1>Vasemman alakulman otsikko</h1>
             <p id="footerNote">Tässä on leipäteksti, joka liittyy vasemman alakulman otsikkoon. Se voi olla mikä tahansa kuvaus tai lisätieto, jonka haluat tuoda esiin.</p>
             <button id="footerNoteButton" onclick="handleFooterNoteEdit()">Edit</button>
+            <input id="footerNoteInput" type="text" placeholder="Footer note" hidden />
             <p>Joonatanin tehtävät © 2025</p>
         </div>
 
