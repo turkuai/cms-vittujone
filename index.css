@@ -95,9 +95,9 @@ footer {
 }
 
 footer .footer-left,
-footer .footer-right,
-footer .footer-center {
-    flex: 1; /* Ensures each section takes up available space */
+footer .footer-center,
+footer .footer-right {
+    flex: 1; /* Ensures sections take available space */
 }
 
 footer .footer-center {
@@ -109,12 +109,11 @@ footer ul {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center; /* Center the social media links */
+    justify-content: center; /* Center the footer links */
 }
 
 footer ul li {
     margin-right: 20px;
-    display: inline-block;
 }
 
 footer ul li a {
@@ -149,10 +148,11 @@ footer p {
     margin-top: 10px;
 }
 
-/* Footer right section */
+/* Footer right section (Social Media Links & Edit Button) */
 .footer-right {
     text-align: right;
     flex: 1;
+    position: relative; /* Keeps the edit button and social links fixed in the right corner */
 }
 
 .footer-right h1 {
@@ -173,53 +173,26 @@ footer p {
 .footer-right ul li a {
     color: white;
     text-decoration: none;
-}
-
-.footer-right ul li a:hover {
-    color: #ff4d4d;
-}
-
-/* Ensure content sections take full height and are spaced correctly */
-main {
-    flex-grow: 1;
-}
-
-/* Edit input fields for social media and footer */
-#socialLinkInputSection,
-#footerNoteInput {
-    margin-top: 10px;
-}
-
-input[type="text"] {
-    padding: 5px;
     font-size: 1rem;
-    border-radius: 5px;
+}
+
+footer input {
+    padding: 10px;
+    font-size: 1rem;
+    width: 100%;
     border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-button {
-    padding: 5px 10px;
-    background-color: #e60000;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-}
-
-button:hover {
+footer button {
     background-color: #ff4d4d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
 }
 
-/* Input area for social media editing */
-#socialLinkInputSection {
-    margin-top: 10px;
-}
-
-#footerNoteInput {
-    margin-top: 10px;
-    padding: 5px;
-    font-size: 1rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+footer button:hover {
+    background-color: #e60000;
 }

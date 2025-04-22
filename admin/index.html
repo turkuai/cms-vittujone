@@ -88,10 +88,10 @@
     <header>
         <div class="logo">
             <img src="https://listonic.com/phimageproxy/listonic/products/mango.webp" alt="Logo" width="100">
-            <button onclick="handleLogoEdit()">Edit Logo</button> <!-- Button to edit logo -->
         </div>
         <div class="headline">
             <h1 id="title">Joonatanin Tehtävät</h1>
+            <!-- Keep only one "Edit" button for editing the title -->
             <button id="titleButton" onclick="handleParagraphEdit()">Edit</button>
         </div>
         <nav>
@@ -123,14 +123,11 @@
             <p>Joonatanin tehtävät © 2025</p>
         </div>
 
-        <!-- Centered Footer Links -->
-        <div class="footer-center">
-            <ul id="socialLinks">
-                <li><a href="https://www.facebook.com" target="_blank">Facebook</a></li>
-                <li><a href="https://www.instagram.com" target="_blank">Instagram</a></li>
-                <li><a href="https://www.twitter.com" target="_blank">Twitter</a></li>
-            </ul>
-        </div>
+        <ul id="socialLinks">
+            <li><a href="https://www.facebook.com" target="_blank">Facebook</a></li>
+            <li><a href="https://www.instagram.com" target="_blank">Instagram</a></li>
+            <li><a href="https://www.twitter.com" target="_blank">Twitter</a></li>
+        </ul>
 
         <div class="footer-right">
             <h1>Sosiaalinen media</h1>
@@ -140,6 +137,7 @@
                 <button onclick="handleAddSocialLink()">Add Link</button>
             </div>
         </div>
+
     </footer>
 
 </body>
