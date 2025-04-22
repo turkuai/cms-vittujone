@@ -53,11 +53,40 @@
                 a.target = "_blank";
                 a.innerText = linkText; // Näytetään käyttäjän kirjoittama teksti
                 li.appendChild(a);
+
+                // Lisää poistonappi linkin viereen
+                const removeButton = document.createElement("button");
+                removeButton.innerText = "Remove";
+                removeButton.onclick = function () {
+                    ul.removeChild(li);
+                };
+                li.appendChild(removeButton);
+
+                // Lisää muokkausnappi linkin viereen
+                const editButton = document.createElement("button");
+                editButton.innerText = "Edit";
+                editButton.onclick = function () {
+                    editLink(li, linkText, linkURL); // Kutsutaan muokkaustoimintoa
+                };
+                li.appendChild(editButton);
+
                 ul.appendChild(li);
 
                 // Tyhjennetään kentät
                 document.getElementById("linkTextInput").value = "";
                 document.getElementById("linkURLInput").value = "";
+            }
+        }
+
+        // Muokataan olemassa olevaa linkkiä
+        function editLink(li, oldText, oldURL) {
+            const newText = prompt("Enter new link text:", oldText);
+            const newURL = prompt("Enter new link URL:", oldURL);
+
+            if (newText && newURL) {
+                const a = li.getElementsByTagName("a")[0]; // Haetaan linkki
+                a.innerText = newText;
+                a.href = newURL; // Päivitetään linkin URL
             }
         }
 
@@ -114,9 +143,9 @@
         </div>
 
         <ul id="socialLinks">
-            <li><a href="https://www.facebook.com" target="_blank">Facebook</a></li>
-            <li><a href="https://www.instagram.com" target="_blank">Instagram</a></li>
-            <li><a href="https://www.twitter.com" target="_blank">Twitter</a></li>
+            <li><a href="https://www.facebook.com" target="_blank">Facebook</a><button onclick="removeLink(this)">Remove</button><button onclick="editLink(this)">Edit</button></li>
+            <li><a href="https://www.instagram.com" target="_blank">Instagram</a><button onclick="removeLink(this)">Remove</button><button onclick="editLink(this)">Edit</button></li>
+            <li><a href="https://www.twitter.com" target="_blank">Twitter</a><button onclick="removeLink(this)">Remove</button><button onclick="editLink(this)">Edit</button></li>
         </ul>
 
         <div class="footer-right">
@@ -130,6 +159,13 @@
         </div>
 
     </footer>
+
+    <script>
+        function removeLink(button) {
+            const li = button.parentElement;
+            li.parentElement.removeChild(li);
+        }
+    </script>
 
 </body>
 
