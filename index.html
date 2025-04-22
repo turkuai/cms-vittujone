@@ -6,6 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joontanin Mangokauppa</title>
     <link rel="stylesheet" href="index.css">
+
+    <script>
+                function handleLoad() {
+            const title = localStorage.getItem("title")
+            document.getElementById("title").innerHTML = title;
+        }
+ 
+        addEventListener("load", handleLoad)
+    </script>
+
 </head>
 
 <body>
@@ -16,7 +26,6 @@
         </div>
         <div class="headline">
             <h1>Joonatanin Tehtävät</h1>
-            <button onclick="handleHeadingEdit()">Edit</button>
         </div>
         <nav>
             <ul>
@@ -43,6 +52,7 @@
         <div class="footer-left">
             <h1>Vasemman alakulman otsikko</h1>
             <p>Tässä on leipäteksti, joka liittyy vasemman alakulman otsikkoon. Se voi olla mikä tahansa kuvaus tai lisätieto, jonka haluat tuoda esiin.</p>
+            <p>Joonatanin tehtävät © 2025</p>
         </div>
 
         <ul>
@@ -60,7 +70,6 @@
             </ul>
         </div>
 
-        <p>Joonatanin tehtävät © 2025</p>
     </footer>
 
 </body>
