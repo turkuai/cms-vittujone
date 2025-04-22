@@ -91,6 +91,17 @@ footer {
     justify-content: space-between;
     align-items: flex-start;
     margin-top: auto;
+    flex-wrap: wrap; /* Allows footer to wrap on smaller screens */
+}
+
+footer .footer-left,
+footer .footer-right,
+footer .footer-center {
+    flex: 1; /* Ensures each section takes up available space */
+}
+
+footer .footer-center {
+    text-align: center;
 }
 
 footer ul {
@@ -98,6 +109,7 @@ footer ul {
     margin: 0;
     padding: 0;
     display: flex;
+    justify-content: center; /* Center the social media links */
 }
 
 footer ul li {
@@ -137,6 +149,7 @@ footer p {
     margin-top: 10px;
 }
 
+/* Footer right section */
 .footer-right {
     text-align: right;
     flex: 1;
@@ -164,4 +177,49 @@ footer p {
 
 .footer-right ul li a:hover {
     color: #ff4d4d;
+}
+
+/* Ensure content sections take full height and are spaced correctly */
+main {
+    flex-grow: 1;
+}
+
+/* Edit input fields for social media and footer */
+#socialLinkInputSection,
+#footerNoteInput {
+    margin-top: 10px;
+}
+
+input[type="text"] {
+    padding: 5px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #e60000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff4d4d;
+}
+
+/* Input area for social media editing */
+#socialLinkInputSection {
+    margin-top: 10px;
+}
+
+#footerNoteInput {
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
