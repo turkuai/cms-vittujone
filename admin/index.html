@@ -19,8 +19,8 @@
 
             if (!editLogoMode) {
                 const logoURL = logoInput.value;
-                logoImage.src = logoURL; // Päivitetään logo
-                localStorage.setItem("logoURL", logoURL); // Tallennetaan URL paikallisesti
+                logoImage.src = logoURL;
+                localStorage.setItem("logoURL", logoURL);
             }
 
             logoImage.hidden = editLogoMode;
@@ -51,10 +51,9 @@
                 const a = document.createElement("a");
                 a.href = linkURL;
                 a.target = "_blank";
-                a.innerText = linkText; // Näytetään käyttäjän kirjoittama teksti
+                a.innerText = linkText;
                 li.appendChild(a);
 
-                // Lisää poistonappi linkin viereen
                 const removeButton = document.createElement("button");
                 removeButton.innerText = "Remove";
                 removeButton.onclick = function () {
@@ -62,17 +61,15 @@
                 };
                 li.appendChild(removeButton);
 
-                // Lisää muokkausnappi linkin viereen
                 const editButton = document.createElement("button");
                 editButton.innerText = "Edit";
                 editButton.onclick = function () {
-                    editLink(li, linkText, linkURL); // Kutsutaan muokkaustoimintoa
+                    editLink(li, linkText, linkURL);
                 };
                 li.appendChild(editButton);
 
                 ul.appendChild(li);
 
-                // Tyhjennetään kentät
                 document.getElementById("linkTextInput").value = "";
                 document.getElementById("linkURLInput").value = "";
             }
@@ -84,21 +81,53 @@
             const newURL = prompt("Enter new link URL:", oldURL);
 
             if (newText && newURL) {
-                const a = li.getElementsByTagName("a")[0]; // Haetaan linkki
+                const a = li.getElementsByTagName("a")[0];
                 a.innerText = newText;
-                a.href = newURL; // Päivitetään linkin URL
+                a.href = newURL;
             }
         }
 
-        // Ladataan tiedot paikallisesta tallennustilasta
-        addEventListener("load", function () {
+        // Poista linkki
+        function removeLink(button) {
+            const li = button.parentElement;
+            li.parentElement.removeChild(li);
+        }
+
+        // Footer-muokkaus
+        function handleFooterNoteEdit() {
+            const footerNote = document.getElementById("footerNote");
+            const footerNoteInput = document.getElementById("footerNoteInput");
+            const footerNoteButton = document.getElementById("footerNoteButton");
+
+            if (footerNoteInput.hidden) {
+                // Muokkaustila päälle
+                footerNoteInput.value = footerNote.innerText;
+                footerNote.hidden = true;
+                footerNoteInput.hidden = false;
+                footerNoteButton.innerText = "Save";
+            } else {
+                // Tallenna uusi teksti
+                footerNote.innerText = footerNoteInput.value;
+                footerNote.hidden = false;
+                footerNoteInput.hidden = true;
+                footerNoteButton.innerText = "Edit";
+                localStorage.setItem("footerNote", footerNoteInput.value);
+            }
+        }
+
+        // Ladataan tallennetut tiedot
+        window.addEventListener("load", function () {
             const logoURL = localStorage.getItem("logoURL");
             if (logoURL) {
                 document.getElementById("logoImage").src = logoURL;
             }
+
+            const savedFooterNote = localStorage.getItem("footerNote");
+            if (savedFooterNote) {
+                document.getElementById("footerNote").innerText = savedFooterNote;
+            }
         });
     </script>
-
 </head>
 
 <body>
@@ -137,8 +166,8 @@
         <div class="footer-left">
             <h1>Vasemman alakulman otsikko</h1>
             <p id="footerNote">Tässä on leipäteksti, joka liittyy vasemman alakulman otsikkoon. Se voi olla mikä tahansa kuvaus tai lisätieto, jonka haluat tuoda esiin.</p>
-            <button id="footerNoteButton" onclick="handleFooterNoteEdit()">Edit</button>
             <input id="footerNoteInput" type="text" placeholder="Footer note" hidden />
+            <button id="footerNoteButton" onclick="handleFooterNoteEdit()">Edit</button>
             <p>Joonatanin tehtävät © 2025</p>
         </div>
 
@@ -157,15 +186,7 @@
                 <button onclick="handleAddSocialLink()">Add Link</button>
             </div>
         </div>
-
     </footer>
-
-    <script>
-        function removeLink(button) {
-            const li = button.parentElement;
-            li.parentElement.removeChild(li);
-        }
-    </script>
 
 </body>
 
