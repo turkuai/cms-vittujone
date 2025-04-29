@@ -110,7 +110,8 @@ footer ul {
     padding: 0;
     display: flex;
     flex-wrap: wrap; /* Enables wrapping for social links */
-    justify-content: flex-start; /* Aligns links to the left */
+    justify-content: center; /* Centers the links horizontally */
+    width: 100%; /* Ensures the list takes the full width */
 }
 
 footer ul li {
@@ -118,6 +119,7 @@ footer ul li {
     margin-bottom: 10px; /* Adds space between links vertically */
     flex: 1 0 30%; /* Each link will take up 30% of the available width */
     min-width: 150px; /* Prevents links from becoming too narrow */
+    text-align: center; /* Centers the text of the link */
 }
 
 footer ul li a {
