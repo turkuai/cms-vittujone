@@ -1,0 +1,7 @@
+function handleHeadingEdit(){
+
+}
+
+function handleParagraphEdit(){
+    
+}

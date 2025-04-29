@@ -1,0 +1,205 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #e60000;
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .headline {
+    margin-left: 20px;
+}
+
+header .headline h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+header nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+header nav ul li a:hover {
+    color: #ff4d4d;
+}
+
+.section {
+    padding: 20px;
+    background-color: #fff;
+    margin: 20px;
+    border-radius: 8px;
+}
+
+.section h1 {
+    color: #e60000;
+    font-size: 1.8rem;
+    margin-top: 0;
+}
+
+.section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+.section img {
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+footer {
+    background-color: #e60000;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: auto;
+    flex-wrap: wrap; /* Allows footer to wrap on smaller screens */
+}
+
+footer .footer-left,
+footer .footer-center,
+footer .footer-right {
+    flex: 1; /* Ensures sections take available space */
+}
+
+footer .footer-center {
+    text-align: center;
+}
+
+footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; /* Enables wrapping for social links */
+    justify-content: center; /* Centers the links horizontally */
+    width: 100%; /* Ensures the list takes the full width */
+}
+
+footer ul li {
+    margin-right: 20px;
+    margin-bottom: 10px; /* Adds space between links vertically */
+    flex: 1 0 30%; /* Each link will take up 30% of the available width */
+    min-width: 150px; /* Prevents links from becoming too narrow */
+    text-align: center; /* Centers the text of the link */
+}
+
+footer ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    display: block;
+    width: 100%; /* Ensures the links fill the available space */
+    padding: 10px;
+    text-align: center; /* Centers the link text */
+}
+
+footer ul li a:hover {
+    color: #ff4d4d;
+}
+
+footer p {
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+/* Footer left section */
+.footer-left {
+    text-align: left;
+    flex: 1; /* Ensure it takes up space on the left */
+}
+
+.footer-left h1 {
+    font-size: 1.2rem;
+    color: #000000;
+}
+
+.footer-left p {
+    font-size: 1rem;
+    color: #fff;
+    margin-top: 10px;
+}
+
+/* Footer right section (Social Media Links & Edit Button) */
+.footer-right {
+    text-align: right;
+    flex: 1;
+    position: relative; /* Keeps the edit button and social links fixed in the right corner */
+}
+
+.footer-right h1 {
+    font-size: 1.2rem;
+    color: #000000;
+}
+
+footer input {
+    padding: 10px;
+    font-size: 1rem;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+footer button {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+footer button:hover {
+    background-color: #e60000;
+}
+
+/* Media Queries for responsive design */
+@media (max-width: 768px) {
+    footer ul li {
+        flex: 1 0 45%; /* Allows two links to fit in a row on smaller screens */
+    }
+
+    footer .footer-left,
+    footer .footer-center,
+    footer .footer-right {
+        flex: 1 0 100%; /* Stacks footer sections on top of each other */
+    }
+}
