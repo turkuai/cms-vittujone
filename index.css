@@ -188,3 +188,16 @@ footer button {
 footer button:hover {
     background-color: #e60000;
 }
+
+/* Media Queries for responsive design */
+@media (max-width: 768px) {
+    footer ul li {
+        flex: 1 0 45%; /* Allows two links to fit in a row on smaller screens */
+    }
+
+    footer .footer-left,
+    footer .footer-center,
+    footer .footer-right {
+        flex: 1 0 100%; /* Stacks footer sections on top of each other */
+    }
+}
