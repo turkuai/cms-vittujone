@@ -61,7 +61,7 @@
         const editButton = document.createElement("button");
         editButton.innerText = "Edit";
         editButton.onclick = function () {
-          editLink(li, linkText, linkURL);
+          editLink(li, a.innerText, a.href);
         };
         li.appendChild(editButton);
 
@@ -99,7 +99,8 @@
         footerNoteInput.hidden = false;
         footerNoteButton.innerText = "Save";
       } else {
-        footerNote.innerText = footerNoteInput.value;
+        // Yhdistetään Joonatanin tehtävät © 2025 -rivi alle
+        footerNote.innerHTML = footerNoteInput.value + "<br><small>Joonatanin tehtävät © 2025</small>";
         footerNote.hidden = false;
         footerNoteInput.hidden = true;
         footerNoteButton.innerText = "Edit";
@@ -115,7 +116,19 @@
 
       const savedFooterNote = localStorage.getItem("footerNote");
       if (savedFooterNote) {
-        document.getElementById("footerNote").innerText = savedFooterNote;
+        const footerNote = document.getElementById("footerNote");
+        footerNote.innerHTML = savedFooterNote + "<br><small>Joonatanin tehtävät © 2025</small>";
+      }
+
+      // Näytetään sosiaalilinkit oletuksena Admin-sivulla
+      const socialLinks = document.getElementById("socialLinks");
+      if (socialLinks) {
+        socialLinks.hidden = false;
+      }
+      // Piilotetaan linkin lisäys-osio oletuksena
+      const inputSection = document.getElementById("socialLinkInputSection");
+      if (inputSection) {
+        inputSection.hidden = true;
       }
     });
   </script>
@@ -155,20 +168,27 @@
   <footer>
     <div class="footer-left">
       <h1>Vasemman alakulman otsikko</h1>
-      <p id="footerNote">
-        Tässä on leipäteksti, joka liittyy vasemman alakulman otsikkoon.
-      </p>
-      <p class="footer-copyright">
-        Joonatanin tehtävät © 2025
-      </p>
+      <p id="footerNote">Tässä on leipäteksti, joka liittyy vasemman alakulman otsikkoon.<br><small>Joonatanin tehtävät © 2025</small></p>
       <input id="footerNoteInput" type="text" placeholder="Footer note" hidden />
       <button id="footerNoteButton" onclick="handleFooterNoteEdit()">Edit</button>
     </div>
 
     <ul id="socialLinks">
-      <li><a href="https://www.facebook.com" target="_blank">Facebook</a><button onclick="removeLink(this)">Remove</button><button onclick="editLink(this)">Edit</button></li>
-      <li><a href="https://www.instagram.com" target="_blank">Instagram</a><button onclick="removeLink(this)">Remove</button><button onclick="editLink(this)">Edit</button></li>
-      <li><a href="https://www.twitter.com" target="_blank">Twitter</a><button onclick="removeLink(this)">Remove</button><button onclick="editLink(this)">Edit</button></li>
+      <li>
+        <a href="https://www.facebook.com" target="_blank">Facebook</a>
+        <button onclick="removeLink(this)">Remove</button>
+        <button onclick="editLink(this.parentElement, 'Facebook', 'https://www.facebook.com')">Edit</button>
+      </li>
+      <li>
+        <a href="https://www.instagram.com" target="_blank">Instagram</a>
+        <button onclick="removeLink(this)">Remove</button>
+        <button onclick="editLink(this.parentElement, 'Instagram', 'https://www.instagram.com')">Edit</button>
+      </li>
+      <li>
+        <a href="https://www.twitter.com" target="_blank">Twitter</a>
+        <button onclick="removeLink(this)">Remove</button>
+        <button onclick="editLink(this.parentElement, 'Twitter', 'https://www.twitter.com')">Edit</button>
+      </li>
     </ul>
 
     <div class="footer-right">
@@ -177,7 +197,7 @@
     </div>
   </footer>
 
-  <!-- SIIRRETTY LINKINSYÖTTÖKENTTÄ -->
+  <!-- Sosiaalimedialinkkien lisäys -->
   <div id="socialLinkInputSection" hidden style="padding: 20px; background-color: #f0f0f0; text-align: center;">
     <input id="linkTextInput" type="text" placeholder="Link Text" />
     <input id="linkURLInput" type="text" placeholder="Link URL" />
