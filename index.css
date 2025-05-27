@@ -89,26 +89,23 @@ footer {
     padding: 20px;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: flex-start; /* Tärkeä, jotta otsikot ovat samalla korkeudella */
     margin-top: auto;
-    flex-wrap: wrap; /* Allows footer to wrap on smaller screens */
+    flex-wrap: wrap;
 }
 
 footer .footer-left,
-footer .footer-center,
 footer .footer-right {
-    flex: 1; /* Ensures sections take available space */
-}
-
-footer .footer-left {
-    text-align: left;
     flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
-footer .footer-left h1 {
-    font-size: 1.2rem;
+footer .footer-left h1,
+footer .footer-right h1 {
+    margin: 0 0 10px 0; /* Sama marginaali, jotta ovat samalla korkeudella */
     color: #000000;
-    margin-bottom: 10px;
+    font-size: 1.2rem;
 }
 
 footer .footer-left p {
@@ -137,17 +134,17 @@ footer ul {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-wrap: wrap; /* Enables wrapping for social links */
-    justify-content: center; /* Centers the links horizontally */
-    width: 100%; /* Ensures the list takes the full width */
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
 }
 
 footer ul li {
     margin-right: 20px;
-    margin-bottom: 10px; /* Adds space between links vertically */
-    flex: 1 0 30%; /* Each link will take up 30% of the available width */
-    min-width: 150px; /* Prevents links from becoming too narrow */
-    text-align: center; /* Centers the text of the link */
+    margin-bottom: 10px;
+    flex: 1 0 30%;
+    min-width: 150px;
+    text-align: center;
 }
 
 footer ul li a {
@@ -155,9 +152,9 @@ footer ul li a {
     text-decoration: none;
     font-size: 1rem;
     display: block;
-    width: 100%; /* Ensures the links fill the available space */
+    width: 100%;
     padding: 10px;
-    text-align: center; /* Centers the link text */
+    text-align: center;
 }
 
 footer ul li button {
@@ -180,14 +177,7 @@ footer ul li a:hover {
 
 footer .footer-right {
     text-align: right;
-    flex: 1;
     position: relative;
-}
-
-footer .footer-right h1 {
-    font-size: 1.2rem;
-    color: #000000;
-    margin-bottom: 10px;
 }
 
 footer .footer-right button {
@@ -217,13 +207,12 @@ footer input[type="text"] {
 /* Media Queries for responsive design */
 @media (max-width: 768px) {
     footer ul li {
-        flex: 1 0 45%; /* Allows two links to fit in a row on smaller screens */
+        flex: 1 0 45%;
     }
 
     footer .footer-left,
-    footer .footer-center,
     footer .footer-right {
-        flex: 1 0 100%; /* Stacks footer sections on top of each other */
+        flex: 1 0 100%;
         text-align: center;
     }
 
