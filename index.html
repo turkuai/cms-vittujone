@@ -2,59 +2,67 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Joontanin Mangokauppa</title>
-  <link rel="stylesheet" href="index.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Joontanin Mangokauppa</title>
+    <link rel="stylesheet" href="index.css" />
+
+    <script>
+        function handleLoad() {
+            const title = localStorage.getItem("title");
+            document.getElementById("title").innerHTML = title;
+        }
+        addEventListener("load", handleLoad);
+    </script>
 </head>
 
 <body>
-  <header>
-    <div class="logo">
-      <img src="https://listonic.com/phimageproxy/listonic/products/mango.webp" alt="Logo" width="100" />
-    </div>
-    <div class="headline">
-      <h1>Joonatanin Tehtävät</h1>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="#link1">Link 1</a></li>
-        <li><a href="#link2">Link 2</a></li>
-        <li><a href="#link3">Link 3</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <div class="logo">
+            <img src="https://listonic.com/phimageproxy/listonic/products/mango.webp" alt="Logo" width="100" />
+        </div>
+        <div class="headline">
+            <h1>Joonatanin Tehtävät</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#link1">Link 1</a></li>
+                <li><a href="#link2">Link 2</a></li>
+                <li><a href="#link3">Link 3</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <div class="section">
-    <h1>Crocs kauppa aukeaa</h1>
-    <img src="https://drop-up.eu/cdn/shop/files/crocs-classic-clog-lightning-mcqueen-1-drop-up.webp?v=1718546523&width=1445" alt="Image 1" width="300" />
-    <p>Crocs LoremipsumsumCrocs LoremipsumsumCrocs Loremipsumsum.</p>
-  </div>
-
-  <div class="section">
-    <h1>Crocs kaupasta on huhuja aukeamisesta</h1>
-    <img src="https://drop-up.eu/cdn/shop/files/crocs-classic-clog-lightning-mcqueen-1-drop-up.webp?v=1718546523&width=1445" alt="Image 2" width="300" />
-    <p>Lightning mcqueen lorem ipsumLightning mcqueen lorem ipsumLightning mcqueen lorem ipsum.</p>
-  </div>
-
-  <footer>
-    <div class="footer-left">
-      <h1>Vasemman alakulman otsikko</h1>
-      <p>
-        Tässä on leipäteksti, joka liittyy vasemman alakulman otsikkoon.<br />
-        <span class="copyright">Joonatanin tehtävät © 2025</span>
-      </p>
+    <div class="section">
+        <h1>Crocs kauppa aukeaa</h1>
+        <img src="https://drop-up.eu/cdn/shop/files/crocs-classic-clog-lightning-mcqueen-1-drop-up.webp?v=1718546523&width=1445" alt="Image 1" width="300" />
+        <p>Crocs LoremipsumsumCrocs LoremipsumsumCrocs Loremipsumsum.</p>
     </div>
 
-    <div class="footer-right">
-      <h1>Sosiaalinen media</h1>
-      <ul class="social">
-        <li><a href="https://www.facebook.com" target="_blank">Facebook</a></li>
-        <li><a href="https://www.instagram.com" target="_blank">Instagram</a></li>
-        <li><a href="https://www.twitter.com" target="_blank">Twitter</a></li>
-      </ul>
+    <div class="section">
+        <h1>Crocs kaupasta on huhuja aukeamisesta</h1>
+        <img src="https://drop-up.eu/cdn/shop/files/crocs-classic-clog-lightning-mcqueen-1-drop-up.webp?v=1718546523&width=1445" alt="Image 2" width="300" />
+        <p>Lightning mcqueen lorem ipsumLightning mcqueen lorem ipsumLightning mcqueen lorem ipsumLightning mcqueen lorem ipsum.</p>
     </div>
-  </footer>
+
+    <footer>
+        <div class="footer-left">
+            <h1>Vasemman alakulman otsikko</h1>
+            <p>Tässä on leipäteksti, joka liittyy vasemman alakulman otsikkoon. Se voi olla mikä tahansa kuvaus tai lisätieto, jonka haluat tuoda esiin.</p>
+            <p>Joonatanin tehtävät © 2025</p>
+        </div>
+
+        <!-- POISTETTU KESKELLÄ OLEVA UL LISTA -->
+
+        <div class="footer-right">
+            <h1>Sosiaalinen media</h1>
+            <ul>
+                <li><a href="https://www.facebook.com" target="_blank">Facebook</a></li>
+                <li><a href="https://www.instagram.com" target="_blank">Instagram</a></li>
+                <li><a href="https://www.twitter.com" target="_blank">Twitter</a></li>
+            </ul>
+        </div>
+    </footer>
 </body>
 
 </html>
