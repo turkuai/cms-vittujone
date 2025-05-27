@@ -89,19 +89,33 @@ footer {
     padding: 20px;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
     margin-top: auto;
     flex-wrap: wrap; /* Allows footer to wrap on smaller screens */
+    align-items: stretch; /* Tämä tekee footer left ja right saman korkuisiksi */
 }
 
 footer .footer-left,
 footer .footer-center,
 footer .footer-right {
     flex: 1; /* Ensures sections take available space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-footer .footer-center {
-    text-align: center;
+footer .footer-left {
+    text-align: left;
+}
+
+footer .footer-left h1 {
+    font-size: 1.2rem;
+    color: #000000;
+}
+
+footer .footer-left p {
+    font-size: 1rem;
+    color: #fff;
+    margin-top: 10px;
 }
 
 footer ul {
@@ -136,36 +150,15 @@ footer ul li a:hover {
     color: #ff4d4d;
 }
 
-footer p {
-    margin-top: 10px;
-    font-size: 1rem;
-}
-
-/* Footer left section */
-.footer-left {
-    text-align: left;
-    flex: 1; /* Ensure it takes up space on the left */
-}
-
-.footer-left h1 {
-    font-size: 1.2rem;
-    color: #000000;
-}
-
-.footer-left p {
-    font-size: 1rem;
-    color: #fff;
-    margin-top: 10px;
-}
-
-/* Footer right section (Social Media Links & Edit Button) */
-.footer-right {
+footer .footer-right {
     text-align: right;
     flex: 1;
-    position: relative; /* Keeps the edit button and social links fixed in the right corner */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.footer-right h1 {
+footer .footer-right h1 {
     font-size: 1.2rem;
     color: #000000;
 }
@@ -191,6 +184,25 @@ footer button:hover {
     background-color: #e60000;
 }
 
+/* Pienempi syöttökenttä linkin lisäykseen ja nappulat */
+#socialLinkInputSection {
+    padding: 20px;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+#socialLinkInputSection input {
+    padding: 5px;
+    font-size: 0.9rem;
+    width: 200px;
+    margin: 5px;
+}
+
+#socialLinkInputSection button {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+}
+
 /* Media Queries for responsive design */
 @media (max-width: 768px) {
     footer ul li {
@@ -201,5 +213,10 @@ footer button:hover {
     footer .footer-center,
     footer .footer-right {
         flex: 1 0 100%; /* Stacks footer sections on top of each other */
+        text-align: center;
+    }
+
+    footer .footer-right {
+        text-align: center;
     }
 }

@@ -2,192 +2,183 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joontanin Mangokauppa - Admin</title>
-    <link rel="stylesheet" href="../index.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joontanin Mangokauppa - Admin</title>
+  <link rel="stylesheet" href="../index.css" />
 
-    <script>
-        let editLogoMode = false;
-        let editSocialMediaMode = false;
+  <script>
+    let editLogoMode = false;
+    let editSocialMediaMode = false;
 
-        // Käsitellään logon muokkaus
-        function handleLogoEdit() {
-            editLogoMode = !editLogoMode;
-            const logoImage = document.getElementById("logoImage");
-            const logoInput = document.getElementById("logoInput");
+    function handleLogoEdit() {
+      editLogoMode = !editLogoMode;
+      const logoImage = document.getElementById("logoImage");
+      const logoInput = document.getElementById("logoInput");
 
-            if (!editLogoMode) {
-                const logoURL = logoInput.value;
-                logoImage.src = logoURL;
-                localStorage.setItem("logoURL", logoURL);
-            }
+      if (!editLogoMode) {
+        const logoURL = logoInput.value;
+        logoImage.src = logoURL;
+        localStorage.setItem("logoURL", logoURL);
+      }
 
-            logoImage.hidden = editLogoMode;
-            logoInput.hidden = !editLogoMode;
-            document.getElementById("logoButton").innerHTML = editLogoMode ? "Save" : "Edit";
-        }
+      logoImage.hidden = editLogoMode;
+      logoInput.hidden = !editLogoMode;
+      document.getElementById("logoButton").innerHTML = editLogoMode ? "Save" : "Edit";
+    }
 
-        // Käsitellään sosiaalisen median linkkien muokkaus
-        function handleSocialMediaEdit() {
-            editSocialMediaMode = !editSocialMediaMode;
-            const socialLinks = document.getElementById("socialLinks");
-            const socialLinkInputSection = document.getElementById("socialLinkInputSection");
+    function handleSocialMediaEdit() {
+      editSocialMediaMode = !editSocialMediaMode;
+      const socialLinks = document.getElementById("socialLinks");
+      const inputSection = document.getElementById("socialLinkInputSection");
 
-            socialLinks.hidden = !socialLinks.hidden;
-            socialLinkInputSection.hidden = socialLinks.hidden;
+      socialLinks.hidden = !socialLinks.hidden;
+      inputSection.hidden = socialLinks.hidden;
 
-            document.getElementById("socialMediaButton").innerHTML = socialLinks.hidden ? "Save" : "Edit";
-        }
+      document.getElementById("socialMediaButton").innerHTML = socialLinks.hidden ? "Save" : "Edit";
+    }
 
-        // Lisätään uusi sosiaalisen median linkki
-        function handleAddSocialLink() {
-            const linkText = document.getElementById("linkTextInput").value;
-            const linkURL = document.getElementById("linkURLInput").value;
+    function handleAddSocialLink() {
+      const linkText = document.getElementById("linkTextInput").value;
+      const linkURL = document.getElementById("linkURLInput").value;
 
-            if (linkText && linkURL) {
-                const ul = document.getElementById("socialLinks");
-                const li = document.createElement("li");
-                const a = document.createElement("a");
-                a.href = linkURL;
-                a.target = "_blank";
-                a.innerText = linkText;
-                li.appendChild(a);
+      if (linkText && linkURL) {
+        const ul = document.getElementById("socialLinks");
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = linkURL;
+        a.target = "_blank";
+        a.innerText = linkText;
+        li.appendChild(a);
 
-                const removeButton = document.createElement("button");
-                removeButton.innerText = "Remove";
-                removeButton.onclick = function () {
-                    ul.removeChild(li);
-                };
-                li.appendChild(removeButton);
+        const removeButton = document.createElement("button");
+        removeButton.innerText = "Remove";
+        removeButton.onclick = function () {
+          ul.removeChild(li);
+        };
+        li.appendChild(removeButton);
 
-                const editButton = document.createElement("button");
-                editButton.innerText = "Edit";
-                editButton.onclick = function () {
-                    editLink(li, linkText, linkURL);
-                };
-                li.appendChild(editButton);
+        const editButton = document.createElement("button");
+        editButton.innerText = "Edit";
+        editButton.onclick = function () {
+          editLink(li, linkText, linkURL);
+        };
+        li.appendChild(editButton);
 
-                ul.appendChild(li);
+        ul.appendChild(li);
 
-                document.getElementById("linkTextInput").value = "";
-                document.getElementById("linkURLInput").value = "";
-            }
-        }
+        document.getElementById("linkTextInput").value = "";
+        document.getElementById("linkURLInput").value = "";
+      }
+    }
 
-        // Muokataan olemassa olevaa linkkiä
-        function editLink(li, oldText, oldURL) {
-            const newText = prompt("Enter new link text:", oldText);
-            const newURL = prompt("Enter new link URL:", oldURL);
+    function editLink(li, oldText, oldURL) {
+      const newText = prompt("Enter new link text:", oldText);
+      const newURL = prompt("Enter new link URL:", oldURL);
 
-            if (newText && newURL) {
-                const a = li.getElementsByTagName("a")[0];
-                a.innerText = newText;
-                a.href = newURL;
-            }
-        }
+      if (newText && newURL) {
+        const a = li.getElementsByTagName("a")[0];
+        a.innerText = newText;
+        a.href = newURL;
+      }
+    }
 
-        // Poista linkki
-        function removeLink(button) {
-            const li = button.parentElement;
-            li.parentElement.removeChild(li);
-        }
+    function removeLink(button) {
+      const li = button.parentElement;
+      li.parentElement.removeChild(li);
+    }
 
-        // Footer-muokkaus
-        function handleFooterNoteEdit() {
-            const footerNote = document.getElementById("footerNote");
-            const footerNoteInput = document.getElementById("footerNoteInput");
-            const footerNoteButton = document.getElementById("footerNoteButton");
+    function handleFooterNoteEdit() {
+      const footerNote = document.getElementById("footerNote");
+      const footerNoteInput = document.getElementById("footerNoteInput");
+      const footerNoteButton = document.getElementById("footerNoteButton");
 
-            if (footerNoteInput.hidden) {
-                // Muokkaustila päälle
-                footerNoteInput.value = footerNote.innerText;
-                footerNote.hidden = true;
-                footerNoteInput.hidden = false;
-                footerNoteButton.innerText = "Save";
-            } else {
-                // Tallenna uusi teksti
-                footerNote.innerText = footerNoteInput.value;
-                footerNote.hidden = false;
-                footerNoteInput.hidden = true;
-                footerNoteButton.innerText = "Edit";
-                localStorage.setItem("footerNote", footerNoteInput.value);
-            }
-        }
+      if (footerNoteInput.hidden) {
+        footerNoteInput.value = footerNote.innerText;
+        footerNote.hidden = true;
+        footerNoteInput.hidden = false;
+        footerNoteButton.innerText = "Save";
+      } else {
+        footerNote.innerText = footerNoteInput.value;
+        footerNote.hidden = false;
+        footerNoteInput.hidden = true;
+        footerNoteButton.innerText = "Edit";
+        localStorage.setItem("footerNote", footerNoteInput.value);
+      }
+    }
 
-        // Ladataan tallennetut tiedot
-        window.addEventListener("load", function () {
-            const logoURL = localStorage.getItem("logoURL");
-            if (logoURL) {
-                document.getElementById("logoImage").src = logoURL;
-            }
+    window.addEventListener("load", function () {
+      const logoURL = localStorage.getItem("logoURL");
+      if (logoURL) {
+        document.getElementById("logoImage").src = logoURL;
+      }
 
-            const savedFooterNote = localStorage.getItem("footerNote");
-            if (savedFooterNote) {
-                document.getElementById("footerNote").innerText = savedFooterNote;
-            }
-        });
-    </script>
+      const savedFooterNote = localStorage.getItem("footerNote");
+      if (savedFooterNote) {
+        document.getElementById("footerNote").innerText = savedFooterNote;
+      }
+    });
+  </script>
 </head>
 
 <body>
+  <header>
+    <div class="logo">
+      <img id="logoImage" src="https://listonic.com/phimageproxy/listonic/products/mango.webp" alt="Logo" width="100" />
+      <button id="logoButton" onclick="handleLogoEdit()">Edit</button>
+      <input id="logoInput" type="text" placeholder="Enter Logo URL" hidden />
+    </div>
+    <div class="headline">
+      <h1 id="title">Joonatanin Tehtävät</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#link1">Link 1</a></li>
+        <li><a href="#link2">Link 2</a></li>
+        <li><a href="#link3">Link 3</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <header>
-        <div class="logo">
-            <img id="logoImage" src="https://listonic.com/phimageproxy/listonic/products/mango.webp" alt="Logo" width="100">
-            <button id="logoButton" onclick="handleLogoEdit()">Edit</button>
-            <input id="logoInput" type="text" placeholder="Enter Logo URL" hidden />
-        </div>
-        <div class="headline">
-            <h1 id="title">Joonatanin Tehtävät</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#link1">Link 1</a></li>
-                <li><a href="#link2">Link 2</a></li>
-                <li><a href="#link3">Link 3</a></li>
-            </ul>
-        </nav>
-    </header>
+  <div class="section">
+    <h1>Crocs kauppa aukeaa</h1>
+    <img src="https://drop-up.eu/cdn/shop/files/crocs-classic-clog-lightning-mcqueen-1-drop-up.webp?v=1718546523&width=1445" alt="Image 1" width="300" />
+    <p>Crocs LoremipsumsumCrocs LoremipsumsumCrocs Loremipsumsum.</p>
+  </div>
 
-    <div class="section">
-        <h1>Crocs kauppa aukeaa</h1>
-        <img src="https://drop-up.eu/cdn/shop/files/crocs-classic-clog-lightning-mcqueen-1-drop-up.webp?v=1718546523&width=1445" alt="Image 1" width="300">
-        <p>Crocs LoremipsumsumCrocs LoremipsumsumCrocs Loremipsumsum.</p>
+  <div class="section">
+    <h1>Crocs kaupasta on huhuja aukeamisesta</h1>
+    <img src="https://drop-up.eu/cdn/shop/files/crocs-classic-clog-lightning-mcqueen-1-drop-up.webp?v=1718546523&width=1445" alt="Image 2" width="300" />
+    <p>Lightning mcqueen lorem ipsumLightning mcqueen lorem ipsumLightning mcqueen lorem ipsum.</p>
+  </div>
+
+  <footer>
+    <div class="footer-left">
+      <h1>Vasemman alakulman otsikko</h1>
+      <p id="footerNote">Tässä on leipäteksti, joka liittyy vasemman alakulman otsikkoon.</p>
+      <input id="footerNoteInput" type="text" placeholder="Footer note" hidden />
+      <button id="footerNoteButton" onclick="handleFooterNoteEdit()">Edit</button>
+      <p>Joonatanin tehtävät © 2025</p>
     </div>
 
-    <div class="section">
-        <h1>Crocs kaupasta on huhuja aukeamisesta</h1>
-        <img src="https://drop-up.eu/cdn/shop/files/crocs-classic-clog-lightning-mcqueen-1-drop-up.webp?v=1718546523&width=1445" alt="Image 2" width="300">
-        <p>Lightning mcqueen lorem ipsumLightning mcqueen lorem ipsumLightning mcqueen lorem ipsumLightning mcqueen lorem ipsum.</p>
+    <ul id="socialLinks">
+      <li><a href="https://www.facebook.com" target="_blank">Facebook</a><button onclick="removeLink(this)">Remove</button><button onclick="editLink(this)">Edit</button></li>
+      <li><a href="https://www.instagram.com" target="_blank">Instagram</a><button onclick="removeLink(this)">Remove</button><button onclick="editLink(this)">Edit</button></li>
+      <li><a href="https://www.twitter.com" target="_blank">Twitter</a><button onclick="removeLink(this)">Remove</button><button onclick="editLink(this)">Edit</button></li>
+    </ul>
+
+    <div class="footer-right">
+      <h1>Sosiaalinen media</h1>
+      <button id="socialMediaButton" onclick="handleSocialMediaEdit()">Edit</button>
     </div>
+  </footer>
 
-    <footer>
-        <div class="footer-left">
-            <h1>Vasemman alakulman otsikko</h1>
-            <p id="footerNote">Tässä on leipäteksti, joka liittyy vasemman alakulman otsikkoon. Se voi olla mikä tahansa kuvaus tai lisätieto, jonka haluat tuoda esiin.</p>
-            <input id="footerNoteInput" type="text" placeholder="Footer note" hidden />
-            <button id="footerNoteButton" onclick="handleFooterNoteEdit()">Edit</button>
-            <p>Joonatanin tehtävät © 2025</p>
-        </div>
-
-        <ul id="socialLinks">
-            <li><a href="https://www.facebook.com" target="_blank">Facebook</a><button onclick="removeLink(this)">Remove</button><button onclick="editLink(this)">Edit</button></li>
-            <li><a href="https://www.instagram.com" target="_blank">Instagram</a><button onclick="removeLink(this)">Remove</button><button onclick="editLink(this)">Edit</button></li>
-            <li><a href="https://www.twitter.com" target="_blank">Twitter</a><button onclick="removeLink(this)">Remove</button><button onclick="editLink(this)">Edit</button></li>
-        </ul>
-
-        <div class="footer-right">
-            <h1>Sosiaalinen media</h1>
-            <button id="socialMediaButton" onclick="handleSocialMediaEdit()">Edit</button>
-            <div id="socialLinkInputSection" hidden>
-                <input id="linkTextInput" type="text" placeholder="Link Text" />
-                <input id="linkURLInput" type="text" placeholder="Link URL" />
-                <button onclick="handleAddSocialLink()">Add Link</button>
-            </div>
-        </div>
-    </footer>
-
+  <!-- SIIRRETTY LINKINSYÖTTÖKENTTÄ -->
+  <div id="socialLinkInputSection" hidden style="padding: 20px; background-color: #f0f0f0; text-align: center;">
+    <input id="linkTextInput" type="text" placeholder="Link Text" />
+    <input id="linkURLInput" type="text" placeholder="Link URL" />
+    <button onclick="handleAddSocialLink()">Add Link</button>
+  </div>
 </body>
 
 </html>
