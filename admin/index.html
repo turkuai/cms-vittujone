@@ -3,10 +3,9 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Joontanin Mangokauppa - Admin</title>
-  <link rel="stylesheet" href="../index.css" />
-
+  <link rel="stylesheet" href="index.css" />
   <script>
     let editLogoMode = false;
     let editSocialMediaMode = false;
@@ -61,7 +60,7 @@
         const editButton = document.createElement("button");
         editButton.innerText = "Edit";
         editButton.onclick = function () {
-          editLink(li, a.innerText, a.href);
+          editLink(li, linkText, linkURL);
         };
         li.appendChild(editButton);
 
@@ -99,8 +98,7 @@
         footerNoteInput.hidden = false;
         footerNoteButton.innerText = "Save";
       } else {
-        // Yhdistetään Joonatanin tehtävät © 2025 -rivi alle
-        footerNote.innerHTML = footerNoteInput.value + "<br><small>Joonatanin tehtävät © 2025</small>";
+        footerNote.innerText = footerNoteInput.value;
         footerNote.hidden = false;
         footerNoteInput.hidden = true;
         footerNoteButton.innerText = "Edit";
@@ -116,25 +114,13 @@
 
       const savedFooterNote = localStorage.getItem("footerNote");
       if (savedFooterNote) {
-        const footerNote = document.getElementById("footerNote");
-        footerNote.innerHTML = savedFooterNote + "<br><small>Joonatanin tehtävät © 2025</small>";
-      }
-
-      // Näytetään sosiaalilinkit oletuksena Admin-sivulla
-      const socialLinks = document.getElementById("socialLinks");
-      if (socialLinks) {
-        socialLinks.hidden = false;
-      }
-      // Piilotetaan linkin lisäys-osio oletuksena
-      const inputSection = document.getElementById("socialLinkInputSection");
-      if (inputSection) {
-        inputSection.hidden = true;
+        document.getElementById("footerNote").innerText = savedFooterNote;
       }
     });
   </script>
 </head>
 
-<body>
+<body class="admin-mode">
   <header>
     <div class="logo">
       <img id="logoImage" src="https://listonic.com/phimageproxy/listonic/products/mango.webp" alt="Logo" width="100" />
@@ -155,39 +141,42 @@
 
   <div class="section">
     <h1>Crocs kauppa aukeaa</h1>
-    <img src="https://drop-up.eu/cdn/shop/files/crocs-classic-clog-lightning-mcqueen-1-drop-up.webp?v=1718546523&width=1445" alt="Image 1" width="300" />
+    <img src="https://drop-up.eu/cdn/shop/files/crocs-classic-clog-lightning-mcqueen-1-drop-up.webp?v=1718546523&width=1445"
+      alt="Image 1" width="300" />
     <p>Crocs LoremipsumsumCrocs LoremipsumsumCrocs Loremipsumsum.</p>
   </div>
 
   <div class="section">
     <h1>Crocs kaupasta on huhuja aukeamisesta</h1>
-    <img src="https://drop-up.eu/cdn/shop/files/crocs-classic-clog-lightning-mcqueen-1-drop-up.webp?v=1718546523&width=1445" alt="Image 2" width="300" />
+    <img src="https://drop-up.eu/cdn/shop/files/crocs-classic-clog-lightning-mcqueen-1-drop-up.webp?v=1718546523&width=1445"
+      alt="Image 2" width="300" />
     <p>Lightning mcqueen lorem ipsumLightning mcqueen lorem ipsumLightning mcqueen lorem ipsum.</p>
   </div>
 
   <footer>
     <div class="footer-left">
       <h1>Vasemman alakulman otsikko</h1>
-      <p id="footerNote">Tässä on leipäteksti, joka liittyy vasemman alakulman otsikkoon.<br><small>Joonatanin tehtävät © 2025</small></p>
+      <p id="footerNote">Tässä on leipäteksti, joka liittyy vasemman alakulman otsikkoon.</p>
       <input id="footerNoteInput" type="text" placeholder="Footer note" hidden />
       <button id="footerNoteButton" onclick="handleFooterNoteEdit()">Edit</button>
+      <p>Joonatanin tehtävät © 2025</p>
     </div>
 
     <ul id="socialLinks">
       <li>
         <a href="https://www.facebook.com" target="_blank">Facebook</a>
-        <button onclick="removeLink(this)">Remove</button>
-        <button onclick="editLink(this.parentElement, 'Facebook', 'https://www.facebook.com')">Edit</button>
+        <button class="remove-btn" onclick="removeLink(this)">Remove</button>
+        <button class="edit-btn" onclick="editLink(this.parentElement, 'Facebook', 'https://www.facebook.com')">Edit</button>
       </li>
       <li>
         <a href="https://www.instagram.com" target="_blank">Instagram</a>
-        <button onclick="removeLink(this)">Remove</button>
-        <button onclick="editLink(this.parentElement, 'Instagram', 'https://www.instagram.com')">Edit</button>
+        <button class="remove-btn" onclick="removeLink(this)">Remove</button>
+        <button class="edit-btn" onclick="editLink(this.parentElement, 'Instagram', 'https://www.instagram.com')">Edit</button>
       </li>
       <li>
         <a href="https://www.twitter.com" target="_blank">Twitter</a>
-        <button onclick="removeLink(this)">Remove</button>
-        <button onclick="editLink(this.parentElement, 'Twitter', 'https://www.twitter.com')">Edit</button>
+        <button class="remove-btn" onclick="removeLink(this)">Remove</button>
+        <button class="edit-btn" onclick="editLink(this.parentElement, 'Twitter', 'https://www.twitter.com')">Edit</button>
       </li>
     </ul>
 
@@ -195,14 +184,13 @@
       <h1>Sosiaalinen media</h1>
       <button id="socialMediaButton" onclick="handleSocialMediaEdit()">Edit</button>
     </div>
-  </footer>
 
-  <!-- Sosiaalimedialinkkien lisäys -->
-  <div id="socialLinkInputSection" hidden style="padding: 20px; background-color: #f0f0f0; text-align: center;">
-    <input id="linkTextInput" type="text" placeholder="Link Text" />
-    <input id="linkURLInput" type="text" placeholder="Link URL" />
-    <button onclick="handleAddSocialLink()">Add Link</button>
-  </div>
+    <div id="socialLinkInputSection" hidden>
+      <input type="text" id="linkTextInput" placeholder="Link Text" />
+      <input type="text" id="linkURLInput" placeholder="Link URL" />
+      <button onclick="handleAddSocialLink()">Add Link</button>
+    </div>
+  </footer>
 </body>
 
 </html>
