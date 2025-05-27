@@ -1,183 +1,123 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f8f8;
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
 header {
-    background-color: #e60000;
-    color: white;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    position: relative;
+  background-color: #ffa500;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-header .logo {
-    display: flex;
-    align-items: center;
+.logo img {
+  height: 80px;
 }
 
-header .headline {
-    margin-left: 20px;
+.headline h1 {
+  margin: 0;
+  font-size: 28px;
 }
 
-header .headline h1 {
-    font-size: 2rem;
-    margin: 0;
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
 }
 
-header nav {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-header nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-header nav ul li {
-    margin-right: 20px;
-}
-
-header nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.1rem;
-}
-
-header nav ul li a:hover {
-    color: #ff4d4d;
+nav ul li a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
 }
 
 .section {
-    padding: 20px;
-    background-color: #fff;
-    margin: 20px;
-    border-radius: 8px;
-}
-
-.section h1 {
-    color: #e60000;
-    font-size: 1.8rem;
-    margin-top: 0;
-}
-
-.section p {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-top: 10px;
-}
-
-.section img {
-    border-radius: 8px;
-    margin-top: 10px;
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
 }
 
 footer {
-    background-color: #e60000;
-    color: white;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-top: auto;
-    flex-wrap: wrap; /* Allows footer to wrap on smaller screens */
+  background-color: #f5f5f5;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
-footer .footer-left,
-footer .footer-right {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+.footer-left,
+.footer-right {
+  flex: 1 1 300px;
 }
 
-footer .footer-left {
-    text-align: left;
+.footer-left h1,
+.footer-right h1 {
+  margin-top: 0;
+  font-size: 20px;
 }
 
-footer .footer-left h1,
-footer .footer-right h1 {
-    font-size: 1.2rem;
-    color: #000000;
-    margin: 0 0 10px 0;
+footer p {
+  margin: 0 0 10px 0;
 }
 
-footer .footer-left p {
-    margin: 5px 0;
-    color: #fff;
+.social {
+  list-style: none;
+  padding: 0;
 }
 
-footer .footer-left p#footerNote {
-    font-weight: normal;
-    font-size: 1rem;
+.social li {
+  margin-bottom: 5px;
 }
 
-footer .footer-left p.footer-copyright {
-    margin-top: 10px;
-    font-size: 0.9rem;
-    color: #fff;
+.social li a {
+  text-decoration: none;
+  color: #0073e6;
 }
 
-footer ul#socialLinks {
-    list-style: none;
-    padding: 0;
-    margin: 0 20px 0 0;
-    flex: 1;
+.edit-btn {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-footer ul#socialLinks li {
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.edit-btn:hover {
+  background-color: #005bb5;
 }
 
-footer ul#socialLinks li a {
-    color: white;
-    text-decoration: none;
+.input-area {
+  padding: 20px;
+  background-color: #f0f0f0;
+  text-align: center;
 }
 
-footer ul#socialLinks li button {
-    background: #ff4d4d;
-    border: none;
-    padding: 4px 8px;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.8rem;
+.input-area input {
+  margin: 5px;
+  padding: 5px;
 }
 
-footer ul#socialLinks li button:hover {
-    background: #cc0000;
+.input-area button {
+  padding: 6px 12px;
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-footer .footer-right {
-    text-align: right;
+.input-area button:hover {
+  background-color: #005bb5;
 }
 
-footer .footer-right button {
-    background: white;
-    color: #e60000;
-    border: none;
-    padding: 8px 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 1rem;
-}
-
-footer .footer-right button:hover {
-    background: #cc0000;
-    color: white;
+footer .copyright {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #555;
 }
