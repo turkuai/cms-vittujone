@@ -3,9 +3,10 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Joontanin Mangokauppa - Admin</title>
-  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="../index.css" />
+
   <script>
     let editLogoMode = false;
     let editSocialMediaMode = false;
@@ -141,15 +142,13 @@
 
   <div class="section">
     <h1>Crocs kauppa aukeaa</h1>
-    <img src="https://drop-up.eu/cdn/shop/files/crocs-classic-clog-lightning-mcqueen-1-drop-up.webp?v=1718546523&width=1445"
-      alt="Image 1" width="300" />
+    <img src="https://drop-up.eu/cdn/shop/files/crocs-classic-clog-lightning-mcqueen-1-drop-up.webp?v=1718546523&width=1445" alt="Image 1" width="300" />
     <p>Crocs LoremipsumsumCrocs LoremipsumsumCrocs Loremipsumsum.</p>
   </div>
 
   <div class="section">
     <h1>Crocs kaupasta on huhuja aukeamisesta</h1>
-    <img src="https://drop-up.eu/cdn/shop/files/crocs-classic-clog-lightning-mcqueen-1-drop-up.webp?v=1718546523&width=1445"
-      alt="Image 2" width="300" />
+    <img src="https://drop-up.eu/cdn/shop/files/crocs-classic-clog-lightning-mcqueen-1-drop-up.webp?v=1718546523&width=1445" alt="Image 2" width="300" />
     <p>Lightning mcqueen lorem ipsumLightning mcqueen lorem ipsumLightning mcqueen lorem ipsum.</p>
   </div>
 
@@ -165,18 +164,18 @@
     <ul id="socialLinks">
       <li>
         <a href="https://www.facebook.com" target="_blank">Facebook</a>
-        <button class="remove-btn" onclick="removeLink(this)">Remove</button>
-        <button class="edit-btn" onclick="editLink(this.parentElement, 'Facebook', 'https://www.facebook.com')">Edit</button>
+        <button onclick="removeLink(this)">Remove</button>
+        <button onclick="editLink(this)">Edit</button>
       </li>
       <li>
         <a href="https://www.instagram.com" target="_blank">Instagram</a>
-        <button class="remove-btn" onclick="removeLink(this)">Remove</button>
-        <button class="edit-btn" onclick="editLink(this.parentElement, 'Instagram', 'https://www.instagram.com')">Edit</button>
+        <button onclick="removeLink(this)">Remove</button>
+        <button onclick="editLink(this)">Edit</button>
       </li>
       <li>
         <a href="https://www.twitter.com" target="_blank">Twitter</a>
-        <button class="remove-btn" onclick="removeLink(this)">Remove</button>
-        <button class="edit-btn" onclick="editLink(this.parentElement, 'Twitter', 'https://www.twitter.com')">Edit</button>
+        <button onclick="removeLink(this)">Remove</button>
+        <button onclick="editLink(this)">Edit</button>
       </li>
     </ul>
 
@@ -184,13 +183,14 @@
       <h1>Sosiaalinen media</h1>
       <button id="socialMediaButton" onclick="handleSocialMediaEdit()">Edit</button>
     </div>
-
-    <div id="socialLinkInputSection" hidden>
-      <input type="text" id="linkTextInput" placeholder="Link Text" />
-      <input type="text" id="linkURLInput" placeholder="Link URL" />
-      <button onclick="handleAddSocialLink()">Add Link</button>
-    </div>
   </footer>
+
+  <!-- SIIRRETTY LINKINSYÖTTÖKENTTÄ -->
+  <div id="socialLinkInputSection" hidden style="padding: 20px; background-color: #f0f0f0; text-align: center;">
+    <input id="linkTextInput" type="text" placeholder="Link Text" />
+    <input id="linkURLInput" type="text" placeholder="Link URL" />
+    <button onclick="handleAddSocialLink()">Add Link</button>
+  </div>
 </body>
 
 </html>
