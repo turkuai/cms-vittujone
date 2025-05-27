@@ -99,6 +99,7 @@
         footerNoteInput.hidden = false;
         footerNoteButton.innerText = "Save";
       } else {
+        // Yhdistetään Joonatanin tehtävät © 2025 -rivi alle
         footerNote.innerHTML = footerNoteInput.value + "<br><small>Joonatanin tehtävät © 2025</small>";
         footerNote.hidden = false;
         footerNoteInput.hidden = true;
@@ -119,10 +120,12 @@
         footerNote.innerHTML = savedFooterNote + "<br><small>Joonatanin tehtävät © 2025</small>";
       }
 
+      // Näytetään sosiaalilinkit oletuksena Admin-sivulla
       const socialLinks = document.getElementById("socialLinks");
       if (socialLinks) {
         socialLinks.hidden = false;
       }
+      // Piilotetaan linkin lisäys-osio oletuksena
       const inputSection = document.getElementById("socialLinkInputSection");
       if (inputSection) {
         inputSection.hidden = true;
