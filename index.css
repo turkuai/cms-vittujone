@@ -21,6 +21,7 @@ header {
 header .logo {
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
 header .headline {
@@ -89,9 +90,9 @@ footer {
     padding: 20px;
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Varmistaa, että footer-left ja footer-right h1:t ovat samalla korkeudella */
+    align-items: center; /* Tämä pitää footer-left ja footer-right otsikot samalla tasolla */
     margin-top: auto;
-    flex-wrap: wrap; /* Sallii footerin rivityksen pienemmillä näytöillä */
+    flex-wrap: wrap;
 }
 
 .footer-left,
@@ -99,73 +100,122 @@ footer {
     flex: 1;
 }
 
-/* Footer vasen osa */
+/* Footer vasen */
 .footer-left {
     text-align: left;
 }
 
 .footer-left h1 {
     font-size: 1.2rem;
-    color: #000000;
-    margin-top: 0;
-    margin-bottom: 0;
+    color: #000;
+    margin: 0 0 10px 0;
 }
 
 .footer-left p {
     font-size: 1rem;
+    margin: 5px 0;
     color: #fff;
-    margin-top: 10px;
 }
 
-/* Footer oikea osa */
+/* Footer oikea */
 .footer-right {
     text-align: right;
 }
 
 .footer-right h1 {
     font-size: 1.2rem;
-    color: #000000;
-    margin-top: 0;
-    margin-bottom: 0;
+    color: #000;
+    margin: 0 0 10px 0;
 }
 
-.footer-right ul {
-    list-style: none;
-    margin: 10px 0 0 0;
-    padding: 0;
-    display: flex;
-    gap: 15px;
-    justify-content: flex-end;
+/* Sosiaalisen median linkit listasta piilotettu, koska ne on nyt erillisessä boksissa */
+#socialLinks {
+    display: none;
 }
 
-.footer-right ul li a {
+/* Social link input section styling (sivun alareunassa) */
+#socialLinkInputSection {
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+#socialLinkInputSection input[type="text"] {
+    padding: 8px;
+    font-size: 0.9rem;
+    width: 180px;
+    margin: 0 8px 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#socialLinkInputSection button {
+    background-color: #e60000;
     color: white;
-    text-decoration: none;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
     font-size: 1rem;
-    padding: 5px 10px;
-    display: inline-block;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
 
-.footer-right ul li a:hover {
-    color: #ff4d4d;
+#socialLinkInputSection button:hover {
+    background-color: #b30000;
 }
 
-/* Media Queries - responsiivisuus */
+/* Footer edit buttons */
+footer button, 
+header .logo button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+footer button:hover, 
+header .logo button:hover {
+    background-color: #e60000;
+}
+
+/* Input fields (footer note and logo URL) */
+footer input[type="text"],
+header .logo input[type="text"] {
+    padding: 6px 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-left: 10px;
+    width: 180px;
+}
+
+/* Responsiivisuus */
 @media (max-width: 768px) {
     footer {
         flex-direction: column;
-        align-items: flex-start; /* Alustetaan vasemmalle pienemmillä näytöillä */
+        align-items: flex-start;
     }
-
-    .footer-left,
-    .footer-right {
+    .footer-left, .footer-right {
         flex: none;
         width: 100%;
         text-align: left;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
     }
-
-    .footer-right ul {
-        justify-content: flex-start;
+    .footer-right {
+        text-align: left;
+    }
+    header nav {
+        position: static;
+        transform: none;
+        margin-top: 10px;
     }
 }
