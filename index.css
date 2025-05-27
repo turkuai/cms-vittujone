@@ -21,7 +21,6 @@ header {
 header .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
 }
 
 header .headline {
@@ -90,132 +89,95 @@ footer {
     padding: 20px;
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Tämä pitää footer-left ja footer-right otsikot samalla tasolla */
+    align-items: flex-start;
     margin-top: auto;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Allows footer to wrap on smaller screens */
 }
 
-.footer-left,
-.footer-right {
+footer .footer-left,
+footer .footer-right {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
-/* Footer vasen */
-.footer-left {
+footer .footer-left {
     text-align: left;
 }
 
-.footer-left h1 {
+footer .footer-left h1,
+footer .footer-right h1 {
     font-size: 1.2rem;
-    color: #000;
+    color: #000000;
     margin: 0 0 10px 0;
 }
 
-.footer-left p {
-    font-size: 1rem;
+footer .footer-left p {
     margin: 5px 0;
     color: #fff;
 }
 
-/* Footer oikea */
-.footer-right {
+footer .footer-left p#footerNote {
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+footer .footer-left p.footer-copyright {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+footer ul#socialLinks {
+    list-style: none;
+    padding: 0;
+    margin: 0 20px 0 0;
+    flex: 1;
+}
+
+footer ul#socialLinks li {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+footer ul#socialLinks li a {
+    color: white;
+    text-decoration: none;
+}
+
+footer ul#socialLinks li button {
+    background: #ff4d4d;
+    border: none;
+    padding: 4px 8px;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+footer ul#socialLinks li button:hover {
+    background: #cc0000;
+}
+
+footer .footer-right {
     text-align: right;
 }
 
-.footer-right h1 {
-    font-size: 1.2rem;
-    color: #000;
-    margin: 0 0 10px 0;
-}
-
-/* Sosiaalisen median linkit listasta piilotettu, koska ne on nyt erillisessä boksissa */
-#socialLinks {
-    display: none;
-}
-
-/* Social link input section styling (sivun alareunassa) */
-#socialLinkInputSection {
-    background-color: #f0f0f0;
-    padding: 20px;
-    text-align: center;
-    width: 100%;
-    box-sizing: border-box;
-    margin-top: 20px;
-    border-radius: 8px;
-}
-
-#socialLinkInputSection input[type="text"] {
-    padding: 8px;
-    font-size: 0.9rem;
-    width: 180px;
-    margin: 0 8px 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-#socialLinkInputSection button {
-    background-color: #e60000;
-    color: white;
+footer .footer-right button {
+    background: white;
+    color: #e60000;
     border: none;
     padding: 8px 16px;
     cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
     font-size: 1rem;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
 }
 
-#socialLinkInputSection button:hover {
-    background-color: #b30000;
-}
-
-/* Footer edit buttons */
-footer button, 
-header .logo button {
-    background-color: #ff4d4d;
+footer .footer-right button:hover {
+    background: #cc0000;
     color: white;
-    border: none;
-    padding: 6px 12px;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    margin-left: 10px;
-    transition: background-color 0.3s ease;
-}
-
-footer button:hover, 
-header .logo button:hover {
-    background-color: #e60000;
-}
-
-/* Input fields (footer note and logo URL) */
-footer input[type="text"],
-header .logo input[type="text"] {
-    padding: 6px 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-left: 10px;
-    width: 180px;
-}
-
-/* Responsiivisuus */
-@media (max-width: 768px) {
-    footer {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .footer-left, .footer-right {
-        flex: none;
-        width: 100%;
-        text-align: left;
-        margin-bottom: 10px;
-    }
-    .footer-right {
-        text-align: left;
-    }
-    header nav {
-        position: static;
-        transform: none;
-        margin-top: 10px;
-    }
 }
