@@ -1,4 +1,8 @@
-# CMS
+Moikka
 
-The purpose of this project is to create a simple CMS system. Using a visual editor users are able to create a website without the need of coding it. It's our job to make this possible for them.
- 
+ei admin: https://turkuai.github.io/cms-vittujone/
+
+admin: https://turkuai.github.io/cms-vittujone/admin/
+
+netlify: https://cool-lamington-cce8a6.netlify.app/
+
